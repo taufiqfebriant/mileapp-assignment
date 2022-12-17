@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePackageRequest;
+use App\Http\Requests\UpdatePackageRequest;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -73,7 +74,7 @@ class PackageController extends Controller
 		}
 	}
 
-	public function update(Request $request)
+	public function update(UpdatePackageRequest $request)
 	{
 		try {
 			$package = Package::where('_id', $request->package)->first();
