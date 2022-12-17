@@ -110,8 +110,10 @@ class StorePackageRequest extends FormRequest
 			"koli_data.*.koli_custom_field.awb_sicepat" => "nullable",
 			"koli_data.*.koli_custom_field.harga_barang" => "nullable",
 			"koli_data.*.koli_code" => "required|string",
-			"custom_field" => 'required',
-			"currentLocation" => 'required'
+			"custom_field.catatan_tambahan" => 'nullable|string',
+			"currentLocation.name" => 'required|string',
+			"currentLocation.code" => 'required|string',
+			"currentLocation.type" => 'required|string'
 		];
 	}
 }
