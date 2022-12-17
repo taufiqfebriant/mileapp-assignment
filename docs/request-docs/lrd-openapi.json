@@ -184,54 +184,379 @@
                                         "format": "string"
                                     },
                                     "transaction_cash_amount": {
-                                        "type": "integer",
+                                        "type": "object",
                                         "nullable": false,
-                                        "format": "integer"
+                                        "format": "object"
                                     },
                                     "transaction_cash_change": {
+                                        "type": "object",
+                                        "nullable": false,
+                                        "format": "object"
+                                    },
+                                    "customer_attribute.Nama_Sales": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "customer_attribute.TOP": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "customer_attribute.Jenis_Pelanggan": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.connote_id": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.connote_number": {
                                         "type": "integer",
                                         "nullable": false,
                                         "format": "integer"
                                     },
-                                    "customer_attribute": {
+                                    "connote.connote_service": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.connote_service_price": {
                                         "type": "object",
                                         "nullable": false,
                                         "format": "object"
                                     },
-                                    "connote": {
+                                    "connote.connote_amount": {
                                         "type": "object",
                                         "nullable": false,
                                         "format": "object"
+                                    },
+                                    "connote.connote_code": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.connote_booking_code": {
+                                        "type": "string",
+                                        "nullable": true,
+                                        "format": "string"
+                                    },
+                                    "connote.connote_order": {
+                                        "type": "integer",
+                                        "nullable": false,
+                                        "format": "integer"
+                                    },
+                                    "connote.connote_state": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.connote_state_id": {
+                                        "type": "integer",
+                                        "nullable": false,
+                                        "format": "integer"
+                                    },
+                                    "connote.zone_code_from": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.zone_code_to": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.surcharge_amount": {
+                                        "type": "object",
+                                        "nullable": true,
+                                        "format": "object"
+                                    },
+                                    "connote.transaction_id": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.actual_weight": {
+                                        "type": "object",
+                                        "nullable": false,
+                                        "format": "object"
+                                    },
+                                    "connote.volume_weight": {
+                                        "type": "object",
+                                        "nullable": false,
+                                        "format": "object"
+                                    },
+                                    "connote.chargeable_weight": {
+                                        "type": "object",
+                                        "nullable": false,
+                                        "format": "object"
+                                    },
+                                    "connote.created_at": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.updated_at": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.organization_id": {
+                                        "type": "integer",
+                                        "nullable": false,
+                                        "format": "integer"
+                                    },
+                                    "connote.location_id": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.connote_total_package": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.connote_surcharge_amount": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.connote_sla_day": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.location_name": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.location_type": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.source_tariff_db": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.id_source_tariff": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "connote.pod": {
+                                        "type": "object",
+                                        "nullable": true,
+                                        "format": "object"
+                                    },
+                                    "connote.history": {
+                                        "type": "array",
+                                        "nullable": true,
+                                        "format": "array"
                                     },
                                     "connote_id": {
                                         "type": "string",
                                         "nullable": false,
                                         "format": "string"
                                     },
-                                    "origin_data": {
+                                    "origin_data.customer_name": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "origin_data.customer_address": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "origin_data.customer_email": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "origin_data.customer_phone": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "origin_data.customer_address_detail": {
+                                        "type": "string",
+                                        "nullable": true,
+                                        "format": "string"
+                                    },
+                                    "origin_data.customer_zip_code": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "origin_data.zone_code": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "origin_data.organization_id": {
+                                        "type": "integer",
+                                        "nullable": false,
+                                        "format": "integer"
+                                    },
+                                    "origin_data.location_id": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "destination_data.customer_name": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "destination_data.customer_address": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "destination_data.customer_email": {
+                                        "type": "object",
+                                        "nullable": true,
+                                        "format": "object"
+                                    },
+                                    "destination_data.customer_phone": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "destination_data.customer_address_detail": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "destination_data.customer_zip_code": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "destination_data.zone_code": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "destination_data.organization_id": {
+                                        "type": "integer",
+                                        "nullable": false,
+                                        "format": "integer"
+                                    },
+                                    "destination_data.location_id": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "koli_data.*.koli_length": {
+                                        "type": "integer",
+                                        "nullable": false,
+                                        "format": "integer"
+                                    },
+                                    "koli_data.*.awb_url": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "koli_data.*.created_at": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "koli_data.*.koli_chargeable_weight": {
                                         "type": "object",
                                         "nullable": false,
                                         "format": "object"
                                     },
-                                    "destination_data": {
+                                    "koli_data.*.koli_width": {
                                         "type": "object",
                                         "nullable": false,
                                         "format": "object"
                                     },
-                                    "koli_data": {
+                                    "koli_data.*.koli_surcharge": {
+                                        "type": "array",
+                                        "nullable": true,
+                                        "format": "array"
+                                    },
+                                    "koli_data.*.koli_height": {
                                         "type": "object",
                                         "nullable": false,
                                         "format": "object"
                                     },
-                                    "custom_field": {
+                                    "koli_data.*.updated_at": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "koli_data.*.koli_description": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "koli_data.*.koli_formula_id": {
+                                        "type": "integer",
+                                        "nullable": true,
+                                        "format": "integer"
+                                    },
+                                    "koli_data.*.connote_id": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "koli_data.*.koli_volume": {
                                         "type": "object",
                                         "nullable": false,
                                         "format": "object"
                                     },
-                                    "currentLocation": {
+                                    "koli_data.*.koli_weight": {
                                         "type": "object",
                                         "nullable": false,
                                         "format": "object"
+                                    },
+                                    "koli_data.*.koli_id": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "koli_data.*.koli_custom_field.awb_sicepat": {
+                                        "type": "object",
+                                        "nullable": true,
+                                        "format": "object"
+                                    },
+                                    "koli_data.*.koli_custom_field.harga_barang": {
+                                        "type": "object",
+                                        "nullable": true,
+                                        "format": "object"
+                                    },
+                                    "koli_data.*.koli_code": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "custom_field.catatan_tambahan": {
+                                        "type": "string",
+                                        "nullable": true,
+                                        "format": "string"
+                                    },
+                                    "currentLocation.name": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "currentLocation.code": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
+                                    },
+                                    "currentLocation.type": {
+                                        "type": "string",
+                                        "nullable": false,
+                                        "format": "string"
                                     }
                                 }
                             }
