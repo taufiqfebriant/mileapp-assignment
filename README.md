@@ -44,7 +44,7 @@ Anda bisa melihat dokumentasi API di route `/request-docs` (`/request-docs/?open
 ## Testing
 
 1. Buat file `phpunit.xml` di root project yang isinya diambil dari file `phpunit.xml.dist`
-2. Isi nilai dari env name `DB_CONNECTION` dan `DB_DATABASE` (Anda bisa menambahkan suffix `_test` dari database project yang sesungguhnya)
+2. Isi nilai dari env name `DB_CONNECTION` dan `DB_DATABASE` (Anda bisa menambahkan suffix `_test` dari nama database project yang sesungguhnya)
 
 ```xml
 <env name="DB_CONNECTION" value="mongodb"/>
