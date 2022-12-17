@@ -37,6 +37,10 @@ DB_DSN="mongodb://localhost:27017/mydb"
 php artisan serve
 ```
 
+## Dokumentasi API
+
+Anda bisa melihat dokumentasi API di route `/request-docs` (`/request-docs/?openapi=true` untuk versi OpenAPI). Package yang digunakan: [rakutentech/laravel-request-docs](https://github.com/rakutentech/laravel-request-docs)
+
 ## Testing
 
 1. Buat file `phpunit.xml` di root project yang isinya diambil dari file `phpunit.xml.dist`
