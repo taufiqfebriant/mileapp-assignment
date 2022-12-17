@@ -33,8 +33,8 @@ class PackageController extends Controller
 	{
 		try {
 			$package = Package::create($request->all());
+
 			return response()->json([
-				'message' => 'Package successfully created.',
 				'data' => $package->toArray(),
 			], Response::HTTP_CREATED);
 		} catch (Throwable $e) {
@@ -48,15 +48,28 @@ class PackageController extends Controller
 		}
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Models\Package  $package
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show(Package $package)
+	public function show(Request $request)
 	{
-		//
+		try {
+			$package = Package::where('_id', $request->package)->first();
+			if (!$package) {
+				return response()->json([
+					'message' => 'Package not found.'
+				], Response::HTTP_NOT_FOUND);
+			}
+
+			return response()->json([
+				'data' => $package
+			]);
+		} catch (Throwable $e) {
+			$message = 'Failed to get package.';
+
+			Log::error($message, ['message' => $e->getMessage()]);
+
+			return response()->json([
+				'message' => $message,
+			], Response::HTTP_INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	/**
