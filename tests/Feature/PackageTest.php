@@ -226,4 +226,34 @@ class PackageTest extends TestCase
 				]
 			]);
 	}
+
+	public function test_update_patch_with_valid_request_returns_expected_response()
+	{
+		$this->assertEquals(0, Package::count());
+
+		$package = Package::create($this->package);
+		$this->assertEquals(1, Package::count());
+
+		$patchData = [
+			...$package->toArray(),
+			'customer_name' => 'PT. COBA UBAH',
+			'transaction_amount' => '80000'
+		];
+
+		$response = $this->patchJson(route('package.update', ['package' => $package->id]), $patchData);
+
+		$package = Package::where('_id', $package->id)->first();
+
+		$localCreatedAt = $package->created_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+		$localUpdatedAt = $package->updated_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+
+		$response->assertStatus(Response::HTTP_OK)
+			->assertExactJson([
+				'data' => [
+					...$package->toArray(),
+					'created_at' => $localCreatedAt->format('Y-m-d\TH:i:sO'),
+					'updated_at' => $localUpdatedAt->format('Y-m-d\TH:i:sO')
+				]
+			]);
+	}
 }

@@ -121,9 +121,16 @@ class PackageController extends Controller
 
 				$package->save();
 
+				$localCreatedAt = $package->created_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+				$localUpdatedAt = $package->updated_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+
 				return response()->json([
-					'data' => $package->toArray()
-				], Response::HTTP_NOT_FOUND);
+					'data' => [
+						...$package->toArray(),
+						'created_at' => $localCreatedAt->format('Y-m-d\TH:i:sO'),
+						'updated_at' => $localUpdatedAt->format('Y-m-d\TH:i:sO')
+					]
+				]);
 			}
 
 			if ($package) {
