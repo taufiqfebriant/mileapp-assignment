@@ -209,21 +209,21 @@ class PackageTest extends TestCase
 			]);
 	}
 
-	// public function test_show_with_valid_request_returns_expected_response()
-	// {
-	// 	$this->assertEquals(0, Package::count());
+	public function test_show_with_valid_request_returns_expected_response()
+	{
+		$this->assertEquals(0, Package::count());
 
-	// 	$package = Package::create($this->package);
-	// 	$this->assertEquals(1, Package::count());
+		$package = Package::create($this->package);
+		$this->assertEquals(1, Package::count());
 
-	// 	$response = $this->getJson(route('package.show', ['package' => $package->id]));
+		$response = $this->getJson(route('package.show', ['package' => $package->id]));
 
-	// 	$response->assertStatus(Response::HTTP_OK)
-	// 		->assertExactJson([
-	// 			'data' => [
-	// 				'_id' => $package->id,
-	// 				...$this->package
-	// 			]
-	// 		]);
-	// }
+		$response->assertStatus(Response::HTTP_OK)
+			->assertExactJson([
+				'data' => [
+					'_id' => $package->id,
+					...$this->package
+				]
+			]);
+	}
 }

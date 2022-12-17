@@ -81,8 +81,15 @@ class PackageController extends Controller
 				], Response::HTTP_NOT_FOUND);
 			}
 
+			$localCreatedAt = $package->created_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+			$localUpdatedAt = $package->updated_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+
 			return response()->json([
-				'data' => $package
+				'data' => [
+					...$package->toArray(),
+					'created_at' => $localCreatedAt->format('Y-m-d\TH:i:sO'),
+					'updated_at' => $localUpdatedAt->format('Y-m-d\TH:i:sO')
+				]
 			]);
 		} catch (Throwable $e) {
 			$message = 'Failed to get package.';
