@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePackageRequest;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -29,10 +30,10 @@ class PackageController extends Controller
 		}
 	}
 
-	public function store(Request $request)
+	public function store(StorePackageRequest $request)
 	{
 		try {
-			$package = Package::create($request->except('_id'));
+			$package = Package::create($request->validated());
 
 			return response()->json([
 				'data' => $package->toArray(),
