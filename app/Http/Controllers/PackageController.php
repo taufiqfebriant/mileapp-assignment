@@ -119,14 +119,29 @@ class PackageController extends Controller
 		}
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Models\Package  $package
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(Package $package)
+	public function destroy(Request $request)
 	{
-		//
+		try {
+			$package = Package::where('_id', $request->package)->first();
+			if (!$package) {
+				return response()->json([
+					'message' => 'Package not found.'
+				], Response::HTTP_NOT_FOUND);
+			}
+
+			$package->delete();
+
+			return response()->json([
+				'data' => $package
+			]);
+		} catch (Throwable $e) {
+			$message = 'Failed to delete package.';
+
+			Log::error($message, ['message' => $e->getMessage()]);
+
+			return response()->json([
+				'message' => $message,
+			], Response::HTTP_INTERNAL_SERVER_ERROR);
+		}
 	}
 }
