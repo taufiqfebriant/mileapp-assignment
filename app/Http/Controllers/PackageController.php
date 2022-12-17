@@ -19,7 +19,16 @@ class PackageController extends Controller
 			$packages = Package::all();
 
 			return response()->json([
-				'data' => $packages->toArray()
+				'data' => $packages->map(function ($package) {
+					$localCreatedAt = $package->created_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+					$localUpdatedAt = $package->updated_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+
+					return [
+						...$package->toArray(),
+						'created_at' => $localCreatedAt->format('Y-m-d\TH:i:sO'),
+						'updated_at' => $localUpdatedAt->format('Y-m-d\TH:i:sO')
+					];
+				})
 			]);
 		} catch (Throwable $e) {
 			$message = 'Failed to get packages.';
