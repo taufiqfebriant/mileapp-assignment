@@ -169,7 +169,6 @@ class PackageTest extends TestCase
 		$this->assertEquals(0, Package::count());
 
 		Package::insert(array_fill(0, 5, $this->package));
-
 		$this->assertEquals(5, Package::count());
 
 		$packages = Package::all();
@@ -180,6 +179,24 @@ class PackageTest extends TestCase
 			->assertStatus(Response::HTTP_OK)
 			->assertExactJson([
 				'data' => $packages->toArray(),
+			]);
+	}
+
+	public function test_store_with_valid_request_returns_expected_response()
+	{
+		$this->assertEquals(0, Package::count());
+
+		$response = $this->postJson(route('package.store'), $this->package);
+
+		$insertedPackage = Package::select('_id')->first();
+
+		$response
+			->assertStatus(Response::HTTP_CREATED)
+			->assertExactJson([
+				'data' => [
+					'_id' => $insertedPackage->id,
+					...$this->package
+				]
 			]);
 	}
 }

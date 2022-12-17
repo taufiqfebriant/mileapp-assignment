@@ -34,7 +34,11 @@ class PackageController extends Controller
 	public function store(StorePackageRequest $request)
 	{
 		try {
-			$package = Package::create($request->validated());
+			$data = $request->validated();
+			$data['transaction_additional_field'] = $data['transaction_additional_field'] ?? '';
+			$data['connote']['connote_booking_code'] = $data['connote']['connote_booking_code'] ?? '';
+
+			$package = Package::create($data);
 
 			return response()->json([
 				'data' => $package->toArray(),
