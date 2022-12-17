@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePackageRequest;
 use App\Http\Requests\UpdatePackageRequest;
 use App\Models\Package;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,8 +41,15 @@ class PackageController extends Controller
 
 			$package = Package::create($data);
 
+			$localCreatedAt = $package->created_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+			$localUpdatedAt = $package->updated_at->setTimezone(new DateTimeZone('Asia/Jakarta'));
+
 			return response()->json([
-				'data' => $package->toArray(),
+				'data' => [
+					...$package->toArray(),
+					'created_at' => $localCreatedAt->format('Y-m-d\TH:i:sO'),
+					'updated_at' => $localUpdatedAt->format('Y-m-d\TH:i:sO')
+				],
 			], Response::HTTP_CREATED);
 		} catch (Throwable $e) {
 			$message = 'Failed to create package.';
