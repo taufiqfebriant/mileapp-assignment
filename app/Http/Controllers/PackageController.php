@@ -32,7 +32,7 @@ class PackageController extends Controller
 	public function store(Request $request)
 	{
 		try {
-			$package = Package::create($request->all());
+			$package = Package::create($request->except('_id'));
 
 			return response()->json([
 				'data' => $package->toArray(),
@@ -72,16 +72,51 @@ class PackageController extends Controller
 		}
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\Package  $package
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, Package $package)
+	public function update(Request $request)
 	{
-		//
+		try {
+			$package = Package::where('_id', $request->package)->first();
+			$method = $request->getMethod();
+
+			if ($method === 'PATCH') {
+				if (!$package) {
+					return response()->json([
+						'message' => 'Package not found.'
+					], Response::HTTP_NOT_FOUND);
+				}
+
+				foreach ($request->except('_id') as $key => $value) {
+					$package->$key = $value;
+				}
+
+				$package->save();
+
+				return response()->json([
+					'data' => $package->toArray()
+				], Response::HTTP_NOT_FOUND);
+			}
+
+			if ($package) {
+				$package->delete();
+			}
+
+			$newPackage = Package::create([
+				...$request->toArray(),
+				'_id' => $request->package,
+			]);
+
+			return response()->json([
+				'data' => $newPackage->toArray()
+			]);
+		} catch (Throwable $e) {
+			$message = 'Failed to update package.';
+
+			Log::error($message, ['message' => $e->getMessage()]);
+
+			return response()->json([
+				'message' => $message,
+			], Response::HTTP_INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	/**

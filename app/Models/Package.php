@@ -12,6 +12,7 @@ class Package extends Model
 	protected $connection = 'mongodb';
 
 	protected $fillable = [
+		'_id',
 		"transaction_id",
 		"customer_name",
 		"customer_code",
